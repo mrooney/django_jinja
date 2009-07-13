@@ -1,0 +1,32 @@
+set of functions compiled from various django snippets found in the Internet
+
+preleminary install jinja2 template system from http://jinja.pocoo.org/2/documentation/
+
+then you will gain access to 3 main features:
+
+1. GENERIC VIEWS
+
+  to use jinja2 templates inside your generic views just add following line in your urls:
+  
+    from jinja_handler.jinjasupport import jenv
+    
+  and in your generic dictionaries add a statement:
+  
+    'template_loader':jenv,
+    
+2. NORMAL, HAND-MADE VIEWS
+
+  just import provided render_to_response and you it instead Django built-in function
+  
+both features are able to handle templates placed in /templates/app or /app/templates directory
+same thing with any other template path specified in your TEMPLATE_DIRS 
+  
+3. FILTERS
+
+  there are number of pretty cool (much cooler than standard Django) filters within jinja2
+  in the script I include the most Django-specific functionalities- url resolver, translations, timeutils etc. 
+  you can write your own filters and put the path to the specific module in JINJA_FILTERS tuple within your settings.py- they will be handled automagically
+  same thing with your globals or tests 
+  
+*************************************************
+85% of this code is not mine- i found it on djangosnippets and compiled it into one package (along with cleaning up the code, handling few exceptions etc) for convenience and simplicity in integrating it into any Django project
